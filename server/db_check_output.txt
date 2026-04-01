@@ -1,0 +1,29 @@
+=== ADMIN (1) ===
+  Jayawant Gore | ADMIN-001 | admin@society.com
+
+=== RESIDENTS (25) ===
+  Rohan Deshmukh | A-101 | rohan.deshmukh@gmail.com | active=true
+  Aditi Kulkarni | A-102 | aditi.kulkarni@gmail.com | active=true
+  Sachin Patil | A-201 | sachin.patil@gmail.com | active=true
+  Priya Joshi | A-202 | priya.joshi@gmail.com | active=true
+  Amit Chavan | A-301 | amit.chavan@gmail.com | active=true
+  Neha Pawar | A-302 | neha.pawar@gmail.com | active=true
+  Rahul Shinde | B-101 | rahul.shinde@gmail.com | active=true
+  Sneha Gaikwad | B-102 | sneha.gaikwad@gmail.com | active=true
+  Vikram Kale | B-201 | vikram.kale@gmail.com | active=true
+  Pooja Jadhav | B-202 | pooja.jadhav@gmail.com | active=true
+  Suresh Bhosale | B-301 | suresh.bhosale@gmail.com | active=true
+  Anjali Kadam | B-302 | anjali.kadam@gmail.com | active=true
+  Mahesh Mane | C-101 | mahesh.mane@gmail.com | active=true
+  Swati Shirke | C-102 | swati.shirke@gmail.com | active=true
+  Nilesh More | C-201 | nilesh.more@gmail.com | active=true
+  Kavita Mahajan | C-202 | kavita.mahajan@gmail.com | active=true
+  Prakash Thakur | C-301 | prakash.thakur@gmail.com | active=true
+  Sonali Wagh | C-302 | sonali.wagh@gmail.com | active=true
+  Ramesh Sawant | D-101 | ramesh.sawant@gmail.com | active=true
+  Rupali Rane | D-102 | rupali.rane@gmail.com | active=true
+  Vikas Gokhale | D-201 | vikas.gokhale@gmail.com | active=true
+  Smita Godbole | D-202 | smita.godbole@gmail.com | active=true
+  Sameer Apte | D-301 | sameer.apte@gmail.com | active=true
+  Pallavi Bapat | D-302 | pallavi.bapat@gmail.com | active=true
+  Kiran Phadke | E-101 | kiran.phadke@gmail.com | active=true

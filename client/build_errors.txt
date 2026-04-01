@@ -1,0 +1,113 @@
+﻿[36mvite v6.3.5 [32mbuilding for production...[36m[39m
+node.exe : (node:14848) [M
+ODULE_TYPELESS_PACKAGE_JSO
+N] Warning: Module type 
+of file:///C:/Users/Asus/D
+esktop/bhumi/full_stack/cl
+ient/postcss.config.js?t=1
+774334368969 is not 
+specified and it doesn't 
+parse as CommonJS.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:
+\Users\Asus\AppData\Roamin
+g\n ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: ((  
+  node:14848) [M...se a   
+ s CommonJS.:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+Reparsing as ES module 
+because module syntax was 
+detected. This incurs a 
+performance overhead.
+To eliminate this 
+warning, add "type": 
+"module" to C:\Users\Asus\
+Desktop\bhumi\full_stack\c
+lient\package.json.
+(Use `node 
+--trace-warnings ...` to 
+show where the warning 
+was created)
+transforming...
+[32mΓ£ô[39m 5 modules transformed.
+[31mΓ£ù[39m Build 
+failed in 763ms
+[31merror during build:
+[31m[vite:esbuild] 
+Transform failed with 1 
+error:
+C:/Users/Asus/Desktop/bhum
+i/full_stack/client/src/co
+mponents/ui/sonner.jsx:4:6
+: ERROR: The symbol 
+"Toaster" has already 
+been declared[31m
+file: [36mC:/Users/Asus/D
+esktop/bhumi/full_stack/cl
+ient/src/components/ui/son
+ner.jsx:4:6[31m
+[33m
+[33mThe symbol "Toaster" 
+has already been 
+declared[33m
+2  |  import { Toaster } 
+from "sonner";
+3  |  
+4  |  const Toaster = ({ 
+...props }) => {
+   |        ^
+5  |    const { theme = 
+"system" } = useTheme();
+6  |  
+[31m
+    at 
+failureErrorWithLog (C:\Us
+ers\Asus\Desktop\bhumi\ful
+l_stack\client\node_module
+s\esbuild\lib\main.js:1467
+:15)
+    at C:\Users\Asus\Deskt
+op\bhumi\full_stack\client
+\node_modules\esbuild\lib\
+main.js:736:50
+    at responseCallbacks.<
+computed> (C:\Users\Asus\D
+esktop\bhumi\full_stack\cl
+ient\node_modules\esbuild\
+lib\main.js:603:9)
+    at 
+handleIncomingPacket (C:\U
+sers\Asus\Desktop\bhumi\fu
+ll_stack\client\node_modul
+es\esbuild\lib\main.js:658
+:12)
+    at 
+Socket.readFromStdout (C:\
+Users\Asus\Desktop\bhumi\f
+ull_stack\client\node_modu
+les\esbuild\lib\main.js:58
+1:7)
+    at Socket.emit 
+(node:events:508:20)
+    at addChunk (node:inte
+rnal/streams/readable:564:
+12)
+    at readableAddChunkPus
+hByteMode (node:internal/s
+treams/readable:515:3)
+    at Readable.push (node
+:internal/streams/readable
+:395:5)
+    at Pipe.onStreamRead (
+node:internal/stream_base_
+commons:189:23)[39m

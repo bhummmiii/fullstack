@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties (Brand Theme) ────────────────────────────────────── */
+:root {
+  --font-size: 16px;
+  --background: #f8f9f4;
+  --foreground: #1a1e0f;
+  --card: #ffffff;
+  --card-foreground: #1a1e0f;
+  --popover: #ffffff;
+  --popover-foreground: #1a1e0f;
+  --primary: #636B2F;
+  --primary-foreground: #ffffff;
+  --secondary: #BAC095;
+  --secondary-foreground: #3D4127;
+  --muted: #eef0e6;
+  --muted-foreground: #6b7155;
+  --accent: #D4DE95;
+  --accent-foreground: #3D4127;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(99, 107, 47, 0.15);
+  --input: transparent;
+  --input-background: #f3f5ec;
+  --switch-background: #BAC095;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #636B2F;
+  --chart-1: #636B2F;
+  --chart-2: #BAC095;
+  --chart-3: #D4DE95;
+  --chart-4: #3D4127;
+  --chart-5: #8a9445;
+  --radius: 0.625rem;
+  --sidebar: #3D4127;
+  --sidebar-foreground: #f0f2e4;
+  --sidebar-primary: #D4DE95;
+  --sidebar-primary-foreground: #3D4127;
+  --sidebar-accent: #4a5220;
+  --sidebar-accent-foreground: #f0f2e4;
+  --sidebar-border: rgba(255,255,255,0.08);
+  --sidebar-ring: #BAC095;
+
+  /* Brand colors as CSS variables */
+  --brand-primary: #636B2F;
+  --brand-secondary: #BAC095;
+  --brand-accent: #D4DE95;
+  --brand-dark: #3D4127;
+  --brand-hover: #4a5220;
+
+  /* Text sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+}
+
+.dark {
+  --background: #1a1e0f;
+  --foreground: #f0f2e4;
+  --card: #242818;
+  --card-foreground: #f0f2e4;
+  --popover: #242818;
+  --popover-foreground: #f0f2e4;
+  --primary: #BAC095;
+  --primary-foreground: #3D4127;
+  --secondary: #3a4020;
+  --secondary-foreground: #f0f2e4;
+  --muted: #2e3318;
+  --muted-foreground: #9aA278;
+  --accent: #3a4020;
+  --accent-foreground: #f0f2e4;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fca5a5;
+  --border: rgba(186, 192, 149, 0.15);
+  --input: rgba(186, 192, 149, 0.1);
+  --ring: #BAC095;
+  --sidebar: #2a2f14;
+  --sidebar-foreground: #f0f2e4;
+  --sidebar-primary: #D4DE95;
+  --sidebar-primary-foreground: #3D4127;
+  --sidebar-accent: #3a4020;
+  --sidebar-accent-foreground: #f0f2e4;
+  --sidebar-border: rgba(255,255,255,0.06);
+  --sidebar-ring: #BAC095;
+}
+
+/* ── Base Styles ─────────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography scale */
+  h1 { font-size: var(--text-2xl); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h2 { font-size: var(--text-xl); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h3 { font-size: var(--text-lg); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h4 { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  label { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  button { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  input { font-size: var(--text-base); font-weight: var(--font-weight-normal); line-height: 1.5; }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* ── Custom Scrollbar ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f0f2e4; }
+::-webkit-scrollbar-thumb { background: #BAC095; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #636B2F; }
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 50% { opacity: 0.5; } }
+@keyframes enter {
+  from {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0)
+               scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1))
+               rotate(var(--tw-enter-rotate, 0));
+  }
+}
+@keyframes exit {
+  to {
+    opacity: var(--tw-exit-opacity, 1);
+    transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0)
+               scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1))
+               rotate(var(--tw-exit-rotate, 0));
+  }
+}
+
+/* ── Shadcn/Radix UI CSS Variable Mappings ──────────────────────────────────── */
+/* These are used by shadcn ui components via Tailwind utility class names */
+:root {
+  --tw-ring-color: var(--ring);
+}
