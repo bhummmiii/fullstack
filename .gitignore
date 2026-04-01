@@ -1,0 +1,44 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+
+# ── Environment / Secrets ─────────────────────────────────────────────────────
+# IMPORTANT: never commit .env files (they contain DB credentials & JWT secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+
+# ── Build outputs ─────────────────────────────────────────────────────────────
+dist/
+build/
+client/dist/
+client/build/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ── OS files ──────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+coverage/
+.nyc_output
+*.tsbuildinfo
