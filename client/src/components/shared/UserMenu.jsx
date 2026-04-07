@@ -1,16 +1,16 @@
 import { User as UserIcon, Settings, HelpCircle, LogOut, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
-export function UserMenu({ currentUser, onLogout, onProfileClick }) {
+export function UserMenu({ currentUser, onLogout, onProfileClick, onNavigate }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const getInitials = (name) =>
     name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
 
   const menuItems = [
-    { Icon: UserIcon, label: 'My Profile', action: () => { onProfileClick?.(); setIsOpen(false); } },
-    { Icon: Settings, label: 'Settings', action: () => setIsOpen(false) },
-    { Icon: HelpCircle, label: 'Help & Support', action: () => setIsOpen(false) },
+    { Icon: UserIcon, label: 'My Profile',    action: () => { onProfileClick?.(); setIsOpen(false); } },
+    { Icon: Settings, label: 'Settings',      action: () => { onNavigate?.('settings'); setIsOpen(false); } },
+    { Icon: HelpCircle, label: 'Help & Support', action: () => { onNavigate?.('help'); setIsOpen(false); } },
   ];
 
   return (

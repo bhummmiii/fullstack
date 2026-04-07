@@ -13,6 +13,7 @@ import { Documents } from './components/Documents';
 import { UserProfile } from './components/UserProfile';
 import { Analytics } from './components/Analytics';
 import { Settings } from './components/Settings';
+import { HelpSupport } from './components/HelpSupport';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { Toaster } from './components/ui/sonner';
@@ -130,6 +131,7 @@ function App() {
             currentUser={currentUser}
             onLogout={handleLogout}
             onProfileClick={() => setActiveView('profile')}
+            onNavigate={setActiveView}
           />
 
           <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto">
@@ -146,6 +148,7 @@ function App() {
             {activeView === 'profile'         && <UserProfile currentUser={currentUser} onProfileUpdate={handleProfileUpdate} />}
             {activeView === 'analytics'       && <Analytics />}
             {activeView === 'settings'        && <Settings currentUser={currentUser} />}
+            {activeView === 'help'            && <HelpSupport />}
           </main>
         </div>
       </div>

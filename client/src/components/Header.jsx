@@ -3,7 +3,7 @@ import { SearchBar } from './shared/SearchBar';
 import { NotificationDropdown } from './shared/NotificationDropdown';
 import { UserMenu } from './shared/UserMenu';
 
-export function Header({ currentUser, onLogout, onProfileClick }) {
+export function Header({ currentUser, onLogout, onProfileClick, onNavigate }) {
   // ── Live clock: updates every minute so date/time is always accurate ──
   const [now, setNow] = useState(() => new Date());
 
@@ -61,6 +61,7 @@ export function Header({ currentUser, onLogout, onProfileClick }) {
             currentUser={currentUser}
             onLogout={onLogout}
             onProfileClick={onProfileClick}
+            onNavigate={onNavigate}
           />
         </div>
       </div>

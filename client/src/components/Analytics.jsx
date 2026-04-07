@@ -3,6 +3,7 @@ import {
   ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, AreaChart, Area,
 } from 'recharts';
 import { TrendingUp, AlertCircle, CheckCircle, Users, IndianRupee, Download, TrendingDown } from 'lucide-react';
+import { useState } from 'react';
 
 const complaintTrendData = [
   { month: 'Oct', year: 2025, total: 22, resolved: 18, pending: 4 },
@@ -61,10 +62,86 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 export function Analytics() {
+  const [exporting, setExporting] = useState(false);
+
   const totalComplaints = complaintTrendData.reduce((sum, m) => sum + m.total, 0);
   const totalResolved = complaintTrendData.reduce((sum, m) => sum + m.resolved, 0);
   const resolutionRate = Math.round((totalResolved / totalComplaints) * 100);
   const avgCollection = Math.round(maintenanceData.reduce((sum, m) => sum + m.rate, 0) / maintenanceData.length);
+
+  const handleExportReport = () => {
+    setExporting(true);
+
+    // Build CSV content
+    const rows = [];
+
+    // Summary section
+    rows.push(['HOUSING SOCIETY HUB — ANALYTICS REPORT']);
+    rows.push(['Generated On', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })]);
+    rows.push(['Period', 'Oct 2025 – Mar 2026']);
+    rows.push([]);
+
+    // KPI Summary
+    rows.push(['=== KEY PERFORMANCE INDICATORS ===']);
+    rows.push(['Metric', 'Value']);
+    rows.push(['Total Complaints (6 months)', totalComplaints]);
+    rows.push(['Total Resolved', totalResolved]);
+    rows.push(['Resolution Rate', `${resolutionRate}%`]);
+    rows.push(['Avg Maintenance Collection Rate', `${avgCollection}%`]);
+    rows.push([]);
+
+    // Complaint Trends
+    rows.push(['=== COMPLAINT TRENDS ===']);
+    rows.push(['Month', 'Year', 'Total Complaints', 'Resolved', 'Pending', 'Resolution Rate (%)']);
+    complaintTrendData.forEach((m) => {
+      const rate = Math.round((m.resolved / m.total) * 100);
+      rows.push([m.month, m.year, m.total, m.resolved, m.pending, rate]);
+    });
+    rows.push([]);
+
+    // Maintenance Collection
+    rows.push(['=== MAINTENANCE COLLECTION ===']);
+    rows.push(['Month', 'Year', 'Collection Rate (%)', 'Amount Collected (₹)']);
+    maintenanceData.forEach((m) => {
+      rows.push([m.month, m.year, m.rate, m.collected]);
+    });
+    rows.push([]);
+
+    // Visitor Trends
+    rows.push(['=== VISITOR TRENDS ===']);
+    rows.push(['Month', 'Year', 'Total Visitors', 'Pre-Approved']);
+    visitorData.forEach((m) => {
+      rows.push([m.month, m.year, m.visitors, m.approved]);
+    });
+    rows.push([]);
+
+    // Category Breakdown
+    rows.push(['=== COMPLAINT CATEGORY BREAKDOWN ===']);
+    rows.push(['Category', 'Share (%)']);
+    categoryData.forEach((c) => {
+      rows.push([c.name, c.value]);
+    });
+
+    // Escape and join CSV
+    const csvContent = rows
+      .map((row) =>
+        row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(',')
+      )
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const fileName = `Society_Analytics_Report_${new Date().toISOString().slice(0, 10)}.csv`;
+    link.href = url;
+    link.setAttribute('download', fileName);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    setTimeout(() => setExporting(false), 1000);
+  };
 
   const kpiStats = [
     {
@@ -120,14 +197,17 @@ export function Analytics() {
           </p>
         </div>
         <button
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm transition-all hover:shadow-lg hover:opacity-90"
+          onClick={handleExportReport}
+          disabled={exporting}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm transition-all hover:shadow-lg hover:opacity-90 disabled:opacity-70"
           style={{
             background: 'linear-gradient(135deg, #636B2F, #7a8338)',
             boxShadow: '0 2px 12px rgba(99,107,47,0.3)',
+            cursor: exporting ? 'wait' : 'pointer',
           }}
         >
-          <Download className="w-4 h-4" />
-          Export Report
+          <Download className={`w-4 h-4 ${exporting ? 'animate-bounce' : ''}`} />
+          {exporting ? 'Exporting…' : 'Export Report'}
         </button>
       </div>
 
