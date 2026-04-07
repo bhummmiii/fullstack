@@ -1,5 +1,9 @@
 require('dotenv').config();
 
+// ─── DNS Configuration (Fix for querySrv ECONNREFUSED) ──────────────────────
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']); // Use Google DNS
+
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -16,6 +20,15 @@ const maintenanceRoutes = require('./routes/maintenanceRoutes');
 const residentRoutes    = require('./routes/residentRoutes');
 const visitorRoutes     = require('./routes/visitorRoutes');
 const adminRoutes       = require('./routes/adminRoutes');
+
+// ─── Startup diagnostics ──────────────────────────────────────────────────────
+console.log('\n' + '═'.repeat(70));
+console.log('🏢 HOUSING SOCIETY HUB - SERVER STARTUP DIAGNOSTICS');
+console.log('═'.repeat(70));
+console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+console.log(`Node Version: ${process.version}`);
+console.log(`DNS Servers: 8.8.8.8, 8.8.4.4 (Google DNS)`);
+console.log('═'.repeat(70) + '\n');
 
 // ─── Connect to MongoDB ───────────────────────────────────────────────────────
 connectDB();
