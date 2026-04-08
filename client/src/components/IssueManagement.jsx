@@ -114,15 +114,15 @@ export function IssueManagement({ userRole, currentUser }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Issues &amp; Complaints</h1>
-          <p className="text-sm" style={{ color: '#6b7155' }}>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Issues &amp; Complaints</h1>
+          <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>
             {pagination.total > 0 ? `${pagination.total} complaint${pagination.total !== 1 ? 's' : ''} total` : 'Track and manage all society issues'}
           </p>
         </div>
         <button
           onClick={fetchIssues}
           className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm transition-all hover:opacity-80"
-          style={{ background: 'rgba(99,107,47,0.1)', color: '#636B2F' }}
+          style={{ background: 'rgba(99,107,47,0.06)', color: '#636B2F', fontSize: '0.8125rem' }}
         >
           <RefreshCw className="size-4" />
           Refresh
@@ -141,17 +141,17 @@ export function IssueManagement({ userRole, currentUser }) {
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((stat, i) => (
-          <div key={i} className="bg-white rounded-xl p-5 transition-all hover:shadow-md" style={{ border: '1px solid rgba(99,107,47,0.12)' }}>
+          <div key={i} className="bg-white rounded-2xl p-5 transition-all hover:shadow-md hover:-translate-y-0.5" style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
             <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3" style={{ background: stat.bg }}>
-              <span className="text-xl" style={{ color: stat.color }}>{stat.value}</span>
+              <span style={{ color: stat.color, fontSize: '1.125rem', fontWeight: 600 }}>{stat.value}</span>
             </div>
-            <p className="text-sm" style={{ color: '#6b7155' }}>{stat.label}</p>
+            <p style={{ color: '#6b7155', fontSize: '0.8125rem' }}>{stat.label}</p>
           </div>
         ))}
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl p-5" style={{ border: '1px solid rgba(99,107,47,0.12)' }}>
+      <div className="bg-white rounded-2xl p-5" style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4" style={{ color: '#BAC095' }} />
@@ -206,8 +206,8 @@ export function IssueManagement({ userRole, currentUser }) {
             return (
               <div
                 key={issue._id}
-                className="bg-white rounded-xl p-6 cursor-pointer group transition-all hover:-translate-y-0.5"
-                style={{ border: '1px solid rgba(99,107,47,0.12)', boxShadow: '0 1px 4px rgba(61,65,39,0.04)' }}
+                className="bg-white rounded-2xl p-6 cursor-pointer group transition-all hover:-translate-y-0.5"
+                style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
                 onClick={() => setSelectedIssue(issue)}
                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 20px rgba(99,107,47,0.12)'; e.currentTarget.style.borderColor = 'rgba(99,107,47,0.25)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 1px 4px rgba(61,65,39,0.04)'; e.currentTarget.style.borderColor = 'rgba(99,107,47,0.12)'; }}

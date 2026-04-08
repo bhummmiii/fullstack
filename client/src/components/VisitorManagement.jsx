@@ -105,8 +105,8 @@ export function VisitorManagement({ userRole, currentUser }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Visitor Management</h1>
-          <p className="text-sm" style={{ color: '#6b7155' }}>Track and manage visitor entries</p>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Visitor Management</h1>
+          <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Track and manage visitor entries</p>
         </div>
         <div className="flex gap-2">
           <button

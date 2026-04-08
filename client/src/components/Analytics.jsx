@@ -191,7 +191,7 @@ export function Analytics() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Reports &amp; Analytics</h1>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Reports &amp; Analytics</h1>
           <p className="text-sm" style={{ color: '#6b7155' }}>
             Comprehensive insights into society operations — last 6 months
           </p>

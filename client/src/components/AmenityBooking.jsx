@@ -75,8 +75,8 @@ export function AmenityBooking({ userRole, currentFlatNumber }) {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 style={{ color: '#3D4127' }} className="mb-1">Amenity Booking</h1>
-        <p className="text-sm" style={{ color: '#6b7155' }}>Book community facilities and amenities</p>
+        <h1 style={{ color: '#2c3018' }} className="mb-1">Amenity Booking</h1>
+        <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Book community facilities and amenities</p>
       </div>
 
       {/* Amenities Grid */}
@@ -84,8 +84,8 @@ export function AmenityBooking({ userRole, currentFlatNumber }) {
         {amenities.map((amenity) => (
           <div
             key={amenity.id}
-            className="bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5"
-            style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+            className="bg-white rounded-2xl p-5 transition-all hover:-translate-y-0.5"
+            style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
             onMouseEnter={(e) => {
               (e.currentTarget).style.boxShadow = '0 8px 25px rgba(99,107,47,0.1)';
               (e.currentTarget).style.borderColor = 'rgba(99,107,47,0.25)';
@@ -123,7 +123,7 @@ export function AmenityBooking({ userRole, currentFlatNumber }) {
       </div>
 
       {/* Bookings Table */}
-      <div className="bg-white rounded-xl overflow-hidden" style={{ border: '1px solid rgba(99,107,47,0.12)' }}>
+      <div className="bg-white rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
         <div className="p-5" style={{ borderBottom: '1px solid rgba(186,192,149,0.25)' }}>
           <h2 style={{ color: '#3D4127' }} className="mb-0.5">
             {userRole === 'admin' ? 'All Bookings' : 'Your Bookings'}
@@ -203,7 +203,7 @@ export function AmenityBooking({ userRole, currentFlatNumber }) {
       {/* Booking Modal */}
       {showBookingModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl" style={{ border: '1px solid rgba(99,107,47,0.2)' }}>
+          <div className="bg-white rounded-3xl w-full max-w-lg" style={{ border: '1px solid rgba(99,107,47,0.1)', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}>
             <div className="p-6 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(186,192,149,0.3)' }}>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(99,107,47,0.1)' }}>

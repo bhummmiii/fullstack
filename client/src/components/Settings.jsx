@@ -10,9 +10,9 @@ export function Settings() {
 
   const [societyInfo, setSocietyInfo] = useState({
     name: 'Om Sai Apartment',
-    address: '123, Green Park Colony, Andheri West, Mumbai - 400001',
-    adminName: 'Jayawant Gore',
-    adminEmail: 'admin@omsaiapartment.com',
+    address: 'Om Sai Apartment, Shubham Park, Uttam Nagar, Nashik, Maharashtra ',
+    adminName: 'Nabonath Choudhary',
+    adminEmail: 'nabonath.choudhary@gmail.com',
     adminPhone: '+91 98765 43210',
     totalFlats: '25',
     totalBlocks: '5',
@@ -98,16 +98,16 @@ export function Settings() {
     <div className="space-y-6 max-w-5xl">
       {/* Page Header */}
       <div>
-        <h1 style={{ color: '#3D4127' }} className="mb-1">Settings</h1>
-        <p className="text-sm" style={{ color: '#6b7155' }}>
+        <h1 style={{ color: '#2c3018' }} className="mb-1">Settings</h1>
+        <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>
           Manage society configurations, preferences and system settings
         </p>
       </div>
 
       {/* Settings Card */}
       <div
-        className="bg-white rounded-2xl overflow-hidden"
-        style={{ border: '1px solid rgba(99,107,47,0.12)', boxShadow: '0 2px 12px rgba(61,65,39,0.05)' }}
+        className="bg-white rounded-3xl overflow-hidden"
+        style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
       >
         {/* Tab Bar */}
         <div

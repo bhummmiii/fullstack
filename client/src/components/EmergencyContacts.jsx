@@ -1,4 +1,4 @@
-﻿import { Phone, Mail, MapPin, Shield, AlertTriangle, Flame, Droplet, Building2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Shield, AlertTriangle, Flame, Droplet, Building2 } from 'lucide-react';
 
 export function EmergencyContacts() {
   const emergencyNumbers = [
@@ -27,14 +27,14 @@ export function EmergencyContacts() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 style={{ color: '#3D4127' }} className="mb-1">Emergency Contacts</h1>
-        <p className="text-sm" style={{ color: '#6b7155' }}>Important contact numbers for emergencies</p>
+        <h1 style={{ color: '#2c3018' }} className="mb-1">Emergency Contacts</h1>
+        <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Important contact numbers for emergencies</p>
       </div>
 
       {/* Emergency Alert Banner */}
       <div
-        className="p-5 rounded-xl flex items-start gap-4"
-        style={{ background: 'rgba(220,38,38,0.06)', border: '1.5px solid rgba(220,38,38,0.2)' }}
+        className="p-5 rounded-2xl flex items-start gap-4"
+        style={{ background: 'rgba(220,38,38,0.04)', border: '1px solid rgba(220,38,38,0.12)' }}
       >
         <div
           className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -56,8 +56,8 @@ export function EmergencyContacts() {
           <a
             key={i}
             href={`tel:${contact.number}`}
-            className="bg-white rounded-xl p-5 flex items-center gap-4 transition-all hover:-translate-y-0.5 hover:shadow-lg group"
-            style={{ border: '1px solid rgba(220,38,38,0.15)', textDecoration: 'none' }}
+            className="bg-white rounded-2xl p-5 flex items-center gap-4 transition-all hover:-translate-y-0.5 hover:shadow-lg group"
+            style={{ border: '1px solid rgba(220,38,38,0.1)', textDecoration: 'none', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
           >
             <div
               className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -75,8 +75,8 @@ export function EmergencyContacts() {
 
       {/* Society Management */}
       <div
-        className="bg-white rounded-xl overflow-hidden"
-        style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+        className="bg-white rounded-2xl overflow-hidden"
+        style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
       >
         <div className="p-5" style={{ borderBottom: '1px solid rgba(186,192,149,0.25)' }}>
           <h2 style={{ color: '#3D4127' }} className="mb-0.5">Society Management</h2>

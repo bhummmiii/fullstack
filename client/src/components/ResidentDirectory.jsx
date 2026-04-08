@@ -74,8 +74,8 @@ export function ResidentDirectory({ userRole, currentUser }) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Resident Directory</h1>
-          <p className="text-sm" style={{ color: '#6b7155' }}>Contact information for all society residents</p>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Resident Directory</h1>
+          <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Contact information for all society residents</p>
         </div>
         <button onClick={fetchResidents} className="p-2 rounded-xl" style={{ background: 'rgba(99,107,47,0.08)', color: '#636B2F' }}>
           <RefreshCw className="size-4" />
@@ -99,8 +99,8 @@ export function ResidentDirectory({ userRole, currentUser }) {
         ].map((stat, i) => (
           <div
             key={i}
-            className="bg-white rounded-xl p-5 flex items-center gap-4 transition-all hover:shadow-md hover:-translate-y-0.5"
-            style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+            className="bg-white rounded-2xl p-5 flex items-center gap-4 transition-all hover:shadow-md hover:-translate-y-0.5"
+            style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
           >
             <div
               className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -118,8 +118,8 @@ export function ResidentDirectory({ userRole, currentUser }) {
 
       {/* Search and Filter */}
       <div
-        className="bg-white rounded-xl p-4"
-        style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+        className="bg-white rounded-2xl p-4"
+        style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
       >
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1 relative">
@@ -164,8 +164,8 @@ export function ResidentDirectory({ userRole, currentUser }) {
             return (
               <div
                 key={resident.id}
-                className="bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5 cursor-pointer"
-                style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+                className="bg-white rounded-2xl p-5 transition-all hover:-translate-y-0.5 cursor-pointer"
+                style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = '0 8px 25px rgba(99,107,47,0.1)';
                   e.currentTarget.style.borderColor = 'rgba(99,107,47,0.25)';

@@ -113,8 +113,8 @@ export function Documents({ userRole }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Documents &amp; Files</h1>
-          <p className="text-sm" style={{ color: '#6b7155' }}>Access society documents and important files</p>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Documents &amp; Files</h1>
+          <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Access society documents and important files</p>
         </div>
         {userRole === 'admin' && (
           <button
@@ -132,8 +132,8 @@ export function Documents({ userRole }) {
         {/* Categories Sidebar */}
         <div className="lg:col-span-1">
           <div
-            className="bg-white rounded-xl p-4"
-            style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+            className="bg-white rounded-2xl p-4"
+            style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
           >
             <h3 className="text-sm mb-4" style={{ color: '#3D4127' }}>Categories</h3>
             <div className="space-y-1">
@@ -175,7 +175,7 @@ export function Documents({ userRole }) {
         {/* Documents List */}
         <div className="lg:col-span-3 space-y-4">
           {/* Search */}
-          <div className="bg-white rounded-xl p-4" style={{ border: '1px solid rgba(99,107,47,0.12)' }}>
+          <div className="bg-white rounded-2xl p-4" style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
             <div className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: '#BAC095' }} />
               <input
@@ -195,8 +195,8 @@ export function Documents({ userRole }) {
               {filteredDocuments.map((doc) => (
                 <div
                   key={doc.id}
-                  className="bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5"
-                  style={{ border: '1px solid rgba(99,107,47,0.12)' }}
+                  className="bg-white rounded-2xl p-5 transition-all hover:-translate-y-0.5"
+                  style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}
                   onMouseEnter={(e) => {
                     (e.currentTarget).style.boxShadow = '0 6px 20px rgba(99,107,47,0.1)';
                     (e.currentTarget).style.borderColor = 'rgba(99,107,47,0.22)';
@@ -288,8 +288,8 @@ export function Documents({ userRole }) {
       {showUploadModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div
-            className="bg-white rounded-2xl w-full max-w-lg shadow-2xl"
-            style={{ border: '1px solid rgba(99,107,47,0.2)' }}
+            className="bg-white rounded-3xl w-full max-w-lg"
+            style={{ border: '1px solid rgba(99,107,47,0.1)', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}
           >
             <div className="p-6 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(186,192,149,0.3)' }}>
               <div className="flex items-center gap-3">

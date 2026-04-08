@@ -205,7 +205,7 @@ export function HelpSupport() {
     <div className="space-y-6 max-w-5xl">
       {/* Page Header */}
       <div>
-        <h1 style={{ color: '#3D4127' }} className="mb-1">Help &amp; Support</h1>
+        <h1 style={{ color: '#2c3018' }} className="mb-1">Help &amp; Support</h1>
         <p className="text-sm" style={{ color: '#6b7155' }}>
           Find answers, step-by-step guides, and contact our support team
         </p>
