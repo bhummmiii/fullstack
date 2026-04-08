@@ -1,17 +1,25 @@
 export function EmptyState({ icon: Icon, title, description, action }) {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
-      <div className="flex justify-center mb-4">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-          <Icon className="w-8 h-8 text-gray-400" />
+    <div className="bg-white rounded-2xl p-14 text-center" style={{ border: '1px solid rgba(186,192,149,0.2)', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
+      <div className="flex justify-center mb-5">
+        <div
+          className="w-16 h-16 rounded-2xl flex items-center justify-center"
+          style={{ background: 'rgba(186,192,149,0.12)' }}
+        >
+          <Icon className="w-7 h-7" style={{ color: '#BAC095' }} />
         </div>
       </div>
-      <h3 className="text-lg text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600 mb-6 max-w-md mx-auto">{description}</p>
+      <h3 className="mb-2" style={{ color: '#2c3018', fontSize: '1rem', fontWeight: 600 }}>{title}</h3>
+      <p className="mb-6 max-w-md mx-auto" style={{ color: '#8a9268', fontSize: '0.8125rem', lineHeight: 1.6 }}>{description}</p>
       {action && (
         <button
           onClick={action.onClick}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="px-5 py-2.5 rounded-xl text-white transition-all hover:shadow-md hover:opacity-90"
+          style={{
+            background: 'linear-gradient(135deg, #636B2F, #7a8338)',
+            fontSize: '0.8125rem',
+            fontWeight: 500,
+          }}
         >
           {action.label}
         </button>

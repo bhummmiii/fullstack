@@ -108,7 +108,7 @@ export function RaiseComplaint({ currentUser, onSuccess }) {
           <MessageSquare className="size-6" style={{ color: '#636B2F' }} />
         </div>
         <div>
-          <h1 style={{ color: '#3D4127' }}>Raise a Complaint</h1>
+          <h1 style={{ color: '#2c3018' }}>Raise a Complaint</h1>
           <p className="text-sm" style={{ color: '#6b7155' }}>Submit your issue and we'll address it promptly</p>
         </div>
       </div>

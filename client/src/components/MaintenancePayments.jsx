@@ -49,6 +49,47 @@ export function MaintenancePayments({ userRole, currentUser }) {
     }
   };
 
+  const handleExportReport = () => {
+    try {
+      // Prepare CSV data
+      const headers = ['Flat Number', 'Resident Name', 'Month', 'Amount', 'Due Date', 'Status', 'Payment Date', 'Payment Method'];
+      const rows = payments.map(p => [
+        p.flatNumber || '',
+        p.residentId?.name || p.residentName || '',
+        p.month || '',
+        p.amount || 0,
+        p.dueDate ? new Date(p.dueDate).toLocaleDateString('en-IN') : '',
+        p.status || '',
+        p.paymentDate ? new Date(p.paymentDate).toLocaleDateString('en-IN') : '',
+        p.paymentMethod || '',
+      ]);
+
+      // Create CSV content
+      const csvContent = [
+        headers.join(','),
+        ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+      ].join('\n');
+
+      // Create blob and download
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      
+      link.setAttribute('href', url);
+      link.setAttribute('download', `maintenance_report_${new Date().toISOString().split('T')[0]}.csv`);
+      link.style.visibility = 'hidden';
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast.success('Report exported successfully');
+    } catch (err) {
+      toast.error('Failed to export report');
+      console.error('Export error:', err);
+    }
+  };
+
   const statusConfig = {
     Paid:    { bg: 'rgba(22,163,74,0.1)',  color: '#16a34a', icon: CheckCircle, label: 'Paid'    },
     Unpaid:  { bg: 'rgba(234,88,12,0.1)',  color: '#ea580c', icon: Clock,       label: 'Unpaid'  },
@@ -82,11 +123,12 @@ export function MaintenancePayments({ userRole, currentUser }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Maintenance &amp; Payments</h1>
-          <p className="text-sm" style={{ color: '#6b7155' }}>Track monthly maintenance payments and financial records</p>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Maintenance &amp; Payments</h1>
+          <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Track monthly maintenance payments and financial records</p>
         </div>
         {userRole === 'admin' && (
           <button
+            onClick={handleExportReport}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm transition-all hover:shadow-lg hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #636B2F, #7a8338)', boxShadow: '0 2px 12px rgba(99,107,47,0.3)' }}
           >

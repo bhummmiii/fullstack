@@ -18,6 +18,7 @@ const sampleComplaints = [
     category: 'water',
     priority: 'urgent',
     status: 'Open',
+    residentEmail: 'rohan.deshmukh@gmail.com', // A-101
   },
   {
     title: 'Garbage Waste Accumulation on Terrace',
@@ -25,6 +26,7 @@ const sampleComplaints = [
     category: 'cleanliness',
     priority: 'high',
     status: 'Open',
+    residentEmail: 'priya.joshi@gmail.com', // A-202
   },
   {
     title: 'Broken Elevator in Block B',
@@ -32,6 +34,7 @@ const sampleComplaints = [
     category: 'maintenance',
     priority: 'urgent',
     status: 'In Progress',
+    residentEmail: 'rahul.shinde@gmail.com', // B-101
   },
   {
     title: 'Street Light Not Working Near Gate',
@@ -39,6 +42,7 @@ const sampleComplaints = [
     category: 'electricity',
     priority: 'high',
     status: 'Open',
+    residentEmail: 'vikram.kale@gmail.com', // B-201
   },
   {
     title: 'Parking Space Encroachment',
@@ -46,6 +50,7 @@ const sampleComplaints = [
     category: 'parking',
     priority: 'medium',
     status: 'Open',
+    residentEmail: 'suresh.bhosale@gmail.com', // B-301
   },
   {
     title: 'Excessive Noise from Construction Work',
@@ -53,6 +58,7 @@ const sampleComplaints = [
     category: 'noise',
     priority: 'medium',
     status: 'Resolved',
+    residentEmail: 'mahesh.mane@gmail.com', // C-101
   },
   {
     title: 'Staircase Railing Loose and Unsafe',
@@ -60,6 +66,7 @@ const sampleComplaints = [
     category: 'maintenance',
     priority: 'urgent',
     status: 'In Progress',
+    residentEmail: 'nilesh.more@gmail.com', // C-201
   },
   {
     title: 'Garden Area Needs Maintenance',
@@ -67,6 +74,7 @@ const sampleComplaints = [
     category: 'maintenance',
     priority: 'low',
     status: 'Open',
+    residentEmail: 'ramesh.sawant@gmail.com', // D-101
   },
 ];
 
@@ -74,13 +82,6 @@ async function seedComplaints() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('✔  Connected to MongoDB');
-
-    // Find the resident user
-    const resident = await User.findOne({ email: 'resident@society.com' });
-    if (!resident) {
-      console.error('✖  Resident user not found. Please run seedResident.js first.');
-      process.exit(1);
-    }
 
     // Check if complaints already exist
     const existingCount = await Complaint.countDocuments();
@@ -90,26 +91,48 @@ async function seedComplaints() {
       return;
     }
 
-    // Create complaints
-    const complaintsToInsert = sampleComplaints.map(complaint => ({
-      ...complaint,
-      residentId: resident._id,
-      flatNumber: resident.flatNumber,
-      createdAt: new Date(Date.now() - Math.random() * 14 * 24 * 60 * 60 * 1000), // Random date within last 2 weeks
-      updatedAt: new Date(),
-    }));
+    // Create complaints with different residents
+    const complaintsToInsert = [];
+    
+    for (const complaint of sampleComplaints) {
+      // Find the resident by email
+      const resident = await User.findOne({ email: complaint.residentEmail });
+      
+      if (!resident) {
+        console.log(`⚠  Resident not found for email: ${complaint.residentEmail}, skipping complaint`);
+        continue;
+      }
+
+      complaintsToInsert.push({
+        title: complaint.title,
+        description: complaint.description,
+        category: complaint.category,
+        priority: complaint.priority,
+        status: complaint.status,
+        residentId: resident._id,
+        flatNumber: resident.flatNumber,
+        createdAt: new Date(Date.now() - Math.random() * 14 * 24 * 60 * 60 * 1000), // Random date within last 2 weeks
+        updatedAt: new Date(),
+      });
+    }
+
+    if (complaintsToInsert.length === 0) {
+      console.error('✖  No valid complaints to insert. Please ensure residents exist in the database.');
+      process.exit(1);
+    }
 
     await Complaint.insertMany(complaintsToInsert);
 
-    console.log(`✔  Successfully created ${sampleComplaints.length} sample complaints`);
-    console.log('   Categories covered:');
-    console.log('   - Water leakage issues');
-    console.log('   - Cleanliness and hygiene');
-    console.log('   - Building maintenance');
-    console.log('   - Electrical problems');
-    console.log('   - Parking disputes');
-    console.log('   - Noise complaints');
-    console.log('   - Safety concerns');
+    console.log(`✔  Successfully created ${complaintsToInsert.length} sample complaints`);
+    console.log('   Complaints from different residents:');
+    console.log('   - Rohan Deshmukh (A-101) - Water leakage');
+    console.log('   - Priya Joshi (A-202) - Garbage waste');
+    console.log('   - Rahul Shinde (B-101) - Broken elevator');
+    console.log('   - Vikram Kale (B-201) - Street light');
+    console.log('   - Suresh Bhosale (B-301) - Parking issue');
+    console.log('   - Mahesh Mane (C-101) - Noise complaint');
+    console.log('   - Nilesh More (C-201) - Staircase safety');
+    console.log('   - Ramesh Sawant (D-101) - Garden maintenance');
 
   } catch (err) {
     console.error('✖  Error:', err.message);

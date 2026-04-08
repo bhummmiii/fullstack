@@ -106,8 +106,8 @@ export function Announcements({ userRole, currentUser }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 style={{ color: '#3D4127' }} className="mb-1">Announcements</h1>
-          <p className="text-sm" style={{ color: '#6b7155' }}>Stay updated with society news and notifications</p>
+          <h1 style={{ color: '#2c3018' }} className="mb-1">Announcements</h1>
+          <p style={{ color: '#8a9268', fontSize: '0.8125rem' }}>Stay updated with society news and notifications</p>
         </div>
         {userRole === 'admin' && (
           <button
@@ -142,8 +142,8 @@ export function Announcements({ userRole, currentUser }) {
         ].map((stat, i) => (
           <div
             key={i}
-            className="bg-white rounded-xl px-4 py-3 flex items-center gap-3"
-            style={{ border: '1px solid rgba(99,107,47,0.1)' }}
+            className="bg-white rounded-2xl px-4 py-3 flex items-center gap-3"
+            style={{ border: '1px solid rgba(99,107,47,0.08)', boxShadow: '0 1px 2px rgba(0,0,0,0.02)' }}
           >
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-medium"
@@ -175,10 +175,10 @@ export function Announcements({ userRole, currentUser }) {
           return (
             <div
               key={annId}
-              className="bg-white rounded-xl overflow-hidden transition-all"
+              className="bg-white rounded-2xl overflow-hidden transition-all"
               style={{
-                border: ann.isPinned ? '1.5px solid rgba(99,107,47,0.3)' : '1px solid rgba(99,107,47,0.1)',
-                boxShadow: ann.isPinned ? '0 2px 12px rgba(99,107,47,0.1)' : '0 1px 4px rgba(61,65,39,0.04)',
+                border: ann.isPinned ? '1.5px solid rgba(99,107,47,0.2)' : '1px solid rgba(99,107,47,0.08)',
+                boxShadow: ann.isPinned ? '0 4px 16px rgba(99,107,47,0.08)' : '0 1px 3px rgba(0,0,0,0.03)',
               }}
             >
               {/* Pinned indicator bar */}
@@ -270,8 +270,8 @@ export function Announcements({ userRole, currentUser }) {
       {showCreateModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div
-            className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl"
-            style={{ border: '1px solid rgba(99,107,47,0.2)' }}
+            className="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            style={{ border: '1px solid rgba(99,107,47,0.1)', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}
           >
             {/* Modal Header */}
             <div

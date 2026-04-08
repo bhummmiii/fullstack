@@ -8,6 +8,9 @@ import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { authApi } from '../services/api';
 
+// Import background image
+import loginBgImage from '/login-bg.png';
+
 // ─── Forgot Password Modal ─────────────────────────────────────────────────────
 function ForgotPasswordModal({ onClose }) {
   // step: 'verify' | 'reset' | 'done'
@@ -374,7 +377,7 @@ function ForgotPasswordModal({ onClose }) {
   );
 }
 
-// ─── Login Page ────────────────────────────────────────────────────────────────
+// ─── Login Page (AppSociety Design) ───────────────────────────────────────────
 export function Login({ onLogin }) {
   const [email, setEmail]           = useState('');
   const [password, setPassword]     = useState('');
@@ -410,8 +413,8 @@ export function Login({ onLogin }) {
   };
 
   const fillCredentials = (type) => {
-    setEmail(type === 'admin' ? 'admin@society.com' : 'rohan.deshmukh@gmail.com');
-    setPassword(type === 'admin' ? 'Admin@1234' : 'Rohan@A101');
+    setEmail(type === 'admin' ? 'nabonathchoudhary@gmail.com' : 'rohan.deshmukh@gmail.com');
+    setPassword(type === 'admin' ? 'Nabonath@123' : 'Rohan@A101');
     setError('');
   };
 
@@ -419,64 +422,121 @@ export function Login({ onLogin }) {
     <>
       {showForgot && <ForgotPasswordModal onClose={() => setShowForgot(false)} />}
 
-      <div
-        className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #3D4127 0%, #4a5220 40%, #636B2F 100%)' }}
-      >
-        {/* Decorative background blobs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div
-            className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-20 blur-3xl"
-            style={{ background: '#D4DE95' }}
-          />
-          <div
-            className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full opacity-15 blur-3xl"
-            style={{ background: '#BAC095' }}
-          />
-          <div
-            className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full opacity-10 blur-3xl"
-            style={{ background: '#D4DE95' }}
-          />
-          {/* Subtle grid pattern */}
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: 'radial-gradient(circle, #D4DE95 1px, transparent 1px)',
-              backgroundSize: '32px 32px',
+      <div className="min-h-screen flex">
+        {/* LEFT PANEL - Brand Section (Hidden on mobile) */}
+        <div 
+          className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 relative overflow-hidden"
+          style={{ background: '#636B2F' }}
+        >
+          {/* Background Image - Full Opacity */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url(${loginBgImage})`
             }}
           />
-        </div>
+          {/* Subtle Overlay for Text Readability */}
+          <div 
+            className="absolute inset-0"
+            style={{ 
+              background: 'linear-gradient(135deg, rgba(99, 107, 47, 0.3) 0%, rgba(61, 65, 39, 0.4) 100%)'
+            }}
+          />
 
-        <div className="w-full max-w-md relative z-10">
-          {/* Logo and Title */}
-          <div className="text-center mb-8">
-            <div
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 shadow-xl"
-              style={{ background: 'rgba(212, 222, 149, 0.2)', border: '1.5px solid rgba(212, 222, 149, 0.35)' }}
-            >
-              <Building2 className="size-8" style={{ color: '#D4DE95' }} />
+          {/* Content (relative to overlay) */}
+          <div className="relative z-10">
+            {/* Logo and Tagline */}
+            <div className="flex items-center gap-3 mb-8">
+              <div 
+                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                style={{ background: 'rgba(212, 222, 149, 0.2)' }}
+              >
+                <Building2 className="w-7 h-7" style={{ color: '#D4DE95' }} />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>
+                  Om Sai Apartment
+                </h1>
+              </div>
             </div>
-            <h1 className="mb-2" style={{ color: '#D4DE95' }}>Om Sai Apartment</h1>
-            <p style={{ color: 'rgba(186, 192, 149, 0.8)' }}>Issue &amp; Operations Management System</p>
+
+            <div className="mt-16">
+              <h2 className="text-4xl font-bold mb-4" style={{ color: '#FFFFFF', lineHeight: 1.2 }}>
+                Welcome to<br />Om Sai Apartment
+              </h2>
+              <p className="text-lg mb-12" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.6 }}>
+                Your complete housing society management solution
+              </p>
+
+              {/* Feature Bullets */}
+              <div className="space-y-4">
+                {[
+                  'Digital maintenance tracking',
+                  'Instant complaint resolution',
+                  'Secure payment management',
+                ].map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div 
+                      className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(212, 222, 149, 0.2)' }}
+                    >
+                      <CheckCircle className="w-4 h-4" style={{ color: '#D4DE95' }} />
+                    </div>
+                    <span style={{ color: 'rgba(255,255,255,0.8)' }}>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Login Card */}
-          <div
-            className="rounded-2xl p-8 shadow-2xl"
-            style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(20px)' }}
-          >
-            <div className="mb-6">
-              <h2 style={{ color: '#3D4127' }}>Welcome Back</h2>
-              <p className="text-sm" style={{ color: '#6b7155' }}>Sign in to access your society dashboard</p>
+          {/* Footer Text */}
+          <div className="relative z-10">
+            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              © 2026 Om Sai Apartment. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT PANEL - Login Form */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12" style={{ background: '#FFFFFF' }}>
+          <div className="w-full max-w-sm">
+            {/* Mobile Logo (Visible only on mobile) */}
+            <div className="lg:hidden text-center mb-8">
+              <div 
+                className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-3"
+                style={{ background: 'rgba(99, 107, 47, 0.1)' }}
+              >
+                <Building2 className="w-7 h-7" style={{ color: '#636B2F' }} />
+              </div>
+              <h1 className="text-xl font-bold" style={{ color: '#1A1F0D' }}>
+                Om Sai Apartment
+              </h1>
             </div>
 
+            {/* Form Header */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-2" style={{ color: '#1A1F0D' }}>
+                Sign In to Your Account
+              </h2>
+              <p style={{ color: '#8A9160', fontSize: '15px' }}>
+                Enter your credentials to access the dashboard
+              </p>
+            </div>
+
+            {/* Login Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email Field */}
-              <div className="space-y-2">
-                <Label htmlFor="email" style={{ color: '#3D4127' }}>Email Address</Label>
+              <div>
+                <Label 
+                  htmlFor="email" 
+                  className="block mb-1.5"
+                  style={{ color: '#1A1F0D', fontSize: '13px', fontWeight: 500 }}
+                >
+                  Email Address
+                </Label>
                 <div className="relative">
-                  <div className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#BAC095' }}>
-                    <Mail className="size-4" />
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#8A9160' }}>
+                    <Mail className="w-4 h-4" />
                   </div>
                   <Input
                     id="email"
@@ -484,8 +544,12 @@ export function Login({ onLogin }) {
                     placeholder="yourname@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 h-11"
-                    style={{ borderColor: '#BAC095', outline: 'none' }}
+                    className="pl-11 h-12 rounded-lg transition-all duration-200"
+                    style={{ 
+                      border: '1px solid #E4E8D0',
+                      fontSize: '15px',
+                      color: '#1A1F0D'
+                    }}
                     autoComplete="email"
                     disabled={isLoading}
                   />
@@ -493,11 +557,17 @@ export function Login({ onLogin }) {
               </div>
 
               {/* Password Field */}
-              <div className="space-y-2">
-                <Label htmlFor="password" style={{ color: '#3D4127' }}>Password</Label>
+              <div>
+                <Label 
+                  htmlFor="password" 
+                  className="block mb-1.5"
+                  style={{ color: '#1A1F0D', fontSize: '13px', fontWeight: 500 }}
+                >
+                  Password
+                </Label>
                 <div className="relative">
-                  <div className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#BAC095' }}>
-                    <Lock className="size-4" />
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#8A9160' }}>
+                    <Lock className="w-4 h-4" />
                   </div>
                   <Input
                     id="password"
@@ -505,39 +575,63 @@ export function Login({ onLogin }) {
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 pr-10 h-11"
-                    style={{ borderColor: '#BAC095' }}
+                    className="pl-11 pr-11 h-12 rounded-lg transition-all duration-200"
+                    style={{ 
+                      border: '1px solid #E4E8D0',
+                      fontSize: '15px',
+                      color: '#1A1F0D'
+                    }}
                     autoComplete="current-password"
                     disabled={isLoading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors"
-                    style={{ color: '#BAC095' }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 transition-colors duration-200"
+                    style={{ color: '#8A9160' }}
                   >
-                    {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
 
+              {/* Forgot Password Link */}
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setShowForgot(true)}
+                  className="text-sm hover:underline transition-all duration-200"
+                  style={{ color: '#636B2F', fontSize: '13px' }}
+                >
+                  Forgot Password?
+                </button>
+              </div>
+
               {/* Error Message */}
               {error && (
-                <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-xl">
-                  <AlertCircle className="size-4 text-red-600 mt-0.5 shrink-0" />
-                  <p className="text-sm text-red-700">{error}</p>
+                <div 
+                  className="flex items-start gap-2 p-3 rounded-lg"
+                  style={{ background: '#FEF2F2', border: '1px solid #FECACA' }}
+                >
+                  <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#EF4444' }} />
+                  <p style={{ color: '#B91C1C', fontSize: '14px' }}>{error}</p>
                 </div>
               )}
 
               {/* Login Button */}
               <Button
                 type="submit"
-                className="w-full h-11 text-white shadow-lg transition-all hover:opacity-90 hover:shadow-xl"
-                style={{ background: 'linear-gradient(135deg, #636B2F, #7a8338)', boxShadow: '0 4px 15px rgba(99,107,47,0.3)' }}
+                className="w-full h-11 rounded-lg font-semibold transition-all duration-200 active:scale-95"
+                style={{ 
+                  background: '#636B2F',
+                  color: '#FFFFFF',
+                  fontSize: '14px',
+                  letterSpacing: '0.025em'
+                }}
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center justify-center gap-2">
                     <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
                     Signing in...
                   </span>
@@ -545,66 +639,42 @@ export function Login({ onLogin }) {
                   'Sign In'
                 )}
               </Button>
-
-              {/* Forgot Password */}
-              <div className="text-center">
-                <button
-                  type="button"
-                  id="forgot-password-btn"
-                  className="text-sm hover:underline transition-colors"
-                  style={{ color: '#636B2F' }}
-                  onClick={() => setShowForgot(true)}
-                >
-                  Forgot Password?
-                </button>
-              </div>
             </form>
 
             {/* Demo Credentials */}
-            <div className="mt-6 pt-6 border-t" style={{ borderColor: '#eef0e6' }}>
-              <p className="text-xs text-center mb-3" style={{ color: '#6b7155' }}>
+            <div className="mt-8 pt-6" style={{ borderTop: '1px solid #E4E8D0' }}>
+              <p className="text-center mb-3" style={{ color: '#8A9160', fontSize: '13px' }}>
                 Quick Demo Access
               </p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => fillCredentials('resident')}
-                  className="px-3 py-2.5 rounded-xl text-xs transition-all hover:shadow-md"
+                  className="px-4 py-2.5 rounded-lg transition-all duration-200 hover:shadow-sm"
                   style={{
-                    background: 'rgba(186, 192, 149, 0.15)',
-                    border: '1px solid rgba(186, 192, 149, 0.4)',
-                    color: '#3D4127',
+                    border: '2px solid #636B2F',
+                    color: '#636B2F',
+                    fontSize: '14px',
+                    fontWeight: 600
                   }}
                 >
-                  <Leaf className="size-3 inline mr-1" style={{ color: '#636B2F' }} />
-                  Resident Login
+                  Resident
                 </button>
                 <button
                   type="button"
                   onClick={() => fillCredentials('admin')}
-                  className="px-3 py-2.5 rounded-xl text-xs transition-all hover:shadow-md"
+                  className="px-4 py-2.5 rounded-lg transition-all duration-200"
                   style={{
-                    background: 'rgba(99, 107, 47, 0.1)',
-                    border: '1px solid rgba(99, 107, 47, 0.3)',
-                    color: '#3D4127',
+                    background: '#636B2F',
+                    color: '#FFFFFF',
+                    fontSize: '14px',
+                    fontWeight: 600
                   }}
                 >
-                  ⚙️ Admin Login
+                  Admin
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-xs" style={{ color: 'rgba(186, 192, 149, 0.6)' }}>
-              © 2026 Housing Society Management System
-              <br />
-              <span className="inline-flex items-center gap-1.5 mt-2">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                Secure &nbsp;·&nbsp; Simple &nbsp;·&nbsp; Efficient
-              </span>
-            </p>
           </div>
         </div>
       </div>
