@@ -8,7 +8,7 @@ export function EmergencyContacts() {
   ];
 
   const societyContacts = [
-    { name: 'Society Secretary', designation: 'Mr. Jayawant Gore', phone: '+91 98765 43210', email: 'secretary@omsaiapartment.com', available: '24/7', bg: 'rgba(99,107,47,0.1)', color: '#636B2F' },
+    { name: 'Society Secretary', designation: 'Mr. Nabonath Choudhary', phone: '+91 99605 37555', email: 'nabonathchoudhary@gmail.com', available: '24/7', bg: 'rgba(99,107,47,0.1)', color: '#636B2F' },
     { name: 'Security Head', designation: 'Mr. Ramesh Singh', phone: '+91 98765 43211', email: 'security@omsaiapartment.com', available: '24/7', bg: 'rgba(22,163,74,0.1)', color: '#16a34a' },
     { name: 'Maintenance Head', designation: 'Mr. Suresh Patel', phone: '+91 98765 43212', email: 'maintenance@omsaiapartment.com', available: '8 AM – 8 PM', bg: 'rgba(234,88,12,0.1)', color: '#ea580c' },
     { name: 'Plumber', designation: 'Mr. Ravi', phone: '+91 98765 43213', email: 'plumber@omsaiapartment.com', available: '8 AM – 6 PM', bg: 'rgba(59,130,246,0.1)', color: '#2563eb' },

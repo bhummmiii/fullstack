@@ -13,7 +13,7 @@ export function Settings() {
     address: 'Om Sai Apartment, Shubham Park, Uttam Nagar, Nashik, Maharashtra ',
     adminName: 'Nabonath Choudhary',
     adminEmail: 'nabonath.choudhary@gmail.com',
-    adminPhone: '+91 98765 43210',
+    adminPhone: '+91 99605 37555',
     totalFlats: '25',
     totalBlocks: '5',
     established: '2018',
@@ -43,7 +43,7 @@ export function Settings() {
   });
 
   const [systemSettings, setSystemSettings] = useState({
-    timezone: 'Asia/Kolkata',
+    timezone: 'Asia/Mumbai',
     language: 'en',
     dateFormat: 'DD/MM/YYYY',
     autoResolveAfterDays: '30',
