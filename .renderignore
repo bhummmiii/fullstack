@@ -1,0 +1,39 @@
+# Ignore unnecessary files from Render deployments
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Dependencies (will be installed)
+node_modules
+
+# Build artifacts
+dist
+build
+client/build
+
+# Environment
+.env.local
+.env.*.local
+.env.development
+.env.test
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Client
+client/src
+client/public
+client/vite.config.js
+
+# Docs
+*.md

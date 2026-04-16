@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: housing-society-backend
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: 'cd server && npm install'
+    startCommand: 'cd server && npm start'
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        fromDatabase:
+          name: housing_db
+          property: connectionString
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_ORIGIN
+        value: https://housing-society-management.onrender.com,https://www.housingsociety.online
+
+  - type: static
+    name: housing-society-frontend
+    runtime: static
+    region: oregon
+    plan: free
+    buildCommand: 'cd client && npm install && npm run build'
+    staticPublishPath: ./client/build
+    envVars:
+      - key: VITE_API_URL
+        value: https://housing-society-backend.onrender.com/api
+
+databases:
+  - name: housing_db
+    plan: free
