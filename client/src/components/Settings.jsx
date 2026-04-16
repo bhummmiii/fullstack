@@ -10,7 +10,7 @@ export function Settings() {
 
   const [societyInfo, setSocietyInfo] = useState({
     name: 'Om Sai Apartment',
-    address: 'Om Sai Apartment, Shubham Park, Uttam Nagar, Nashik, Maharashtra ',
+    address: 'Om Sai Apartment, Shubham Park, GajananNagar, Mahajan Nagar, Nashik, Maharashtra ',
     adminName: 'Nabonath Choudhary',
     adminEmail: 'nabonath.choudhary@gmail.com',
     adminPhone: '+91 99605 37555',
