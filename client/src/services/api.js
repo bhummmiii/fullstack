@@ -49,7 +49,7 @@ async function request(endpoint, options = {}) {
     response = await fetch(`${API_BASE_URL}${endpoint}`, config);
   } catch {
     throw new ApiError(
-      'Network error – unable to reach the server. Is the backend running on port 5000?',
+      'Network error – unable to reach the server. Please check your connection and try again.',
       0,
     );
   }
