@@ -13,13 +13,13 @@ const connectDB = require('./config/db');
 const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 
 // ─── Route imports ────────────────────────────────────────────────────────────
-const authRoutes        = require('./routes/authRoutes');
-const complaintRoutes   = require('./routes/complaintRoutes');
-const noticeRoutes      = require('./routes/noticeRoutes');
+const authRoutes = require('./routes/authRoutes');
+const complaintRoutes = require('./routes/complaintRoutes');
+const noticeRoutes = require('./routes/noticeRoutes');
 const maintenanceRoutes = require('./routes/maintenanceRoutes');
-const residentRoutes    = require('./routes/residentRoutes');
-const visitorRoutes     = require('./routes/visitorRoutes');
-const adminRoutes       = require('./routes/adminRoutes');
+const residentRoutes = require('./routes/residentRoutes');
+const visitorRoutes = require('./routes/visitorRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 // ─── Startup diagnostics ──────────────────────────────────────────────────────
 console.log('\n' + '═'.repeat(70));
@@ -37,7 +37,7 @@ connectDB();
 const app = express();
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173')
+const allowedOrigins = (process.env.CLIENT_ORIGIN || 'https://www.housingsociety.online')
   .split(',')
   .map((o) => o.trim());
 
@@ -68,7 +68,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 // ─── Static files (uploaded images / attachments) ────────────────────────────
-app.use('/uploads',   express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ─── Static files (society documents – sample PDFs etc.) ─────────────────────
 app.use('/documents', express.static(path.join(__dirname, 'documents')));
@@ -84,13 +84,13 @@ app.get('/api/health', (req, res) => {
 });
 
 // ─── API Routes ───────────────────────────────────────────────────────────────
-app.use('/api/auth',        authRoutes);
-app.use('/api/complaints',  complaintRoutes);
-app.use('/api/notices',     noticeRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/complaints', complaintRoutes);
+app.use('/api/notices', noticeRoutes);
 app.use('/api/maintenance', maintenanceRoutes);
-app.use('/api/residents',   residentRoutes);
-app.use('/api/visitors',    visitorRoutes);
-app.use('/api/admin',       adminRoutes);
+app.use('/api/residents', residentRoutes);
+app.use('/api/visitors', visitorRoutes);
+app.use('/api/admin', adminRoutes);
 
 // ─── Error handling ───────────────────────────────────────────────────────────
 app.use(notFound);      // 404 for unmatched routes
