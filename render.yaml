@@ -18,7 +18,7 @@ services:
       - key: JWT_SECRET
         sync: false
       - key: CLIENT_ORIGIN
-        value: https://housing-society-management.onrender.com,https://www.housingsociety.online
+        value: https://housingsocietymanagement.vercel.app,https://www.housingsociety.online
 
   - type: static
     name: housing-society-frontend
