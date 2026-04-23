@@ -37,7 +37,7 @@ connectDB();
 const app = express();
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.CLIENT_ORIGIN || 'https://www.housingsociety.online')
+const allowedOrigins = (process.env.CLIENT_ORIGIN || 'https://housingsocietymanagement.vercel.app')
   .split(',')
   .map((o) => o.trim());
 
@@ -50,6 +50,8 @@ app.use(
       if (allowedOrigins.includes(origin)) return callback(null, true);
       // Allow any Vercel deployment (production, preview, dev)
       if (/\.vercel\.app$/.test(origin)) return callback(null, true);
+      // Allow custom domain (housingsociety.online)
+      if (/(?:^https?:\/\/)?(?:www\.)?housingsociety\.online$/.test(origin)) return callback(null, true);
       callback(new Error(`CORS: Origin '${origin}' is not allowed`));
     },
     credentials: true,
