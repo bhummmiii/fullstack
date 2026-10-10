@@ -7,10 +7,48 @@ node_modules/
 # IMPORTANT: never commit .env files (they contain DB credentials & JWT secrets)
 .env
 .env.local
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
+.env.render
+.env.vercel
+.env.staging
+.env.*
+
+# Server-specific env files
 server/.env
+server/.env.*
+server/.env.local
+server/.env.development
+server/.env.production
+server/.env.render
+server/.env.vercel
+
+# Client-specific env files
+client/.env
+client/.env.*
+client/.env.local
+client/.env.development
+client/.env.production
+client/.env.render
+client/.env.vercel
+
+# Debug / diagnostic output files — may contain DB data or credentials
+*.txt
+!README.txt
+server/db_check_output.txt
+
+# Deployment/config docs that hardcode credentials
+# (set env vars in platform dashboards instead — never store them in files)
+DEPLOYMENT.md
+ENV_REFERENCE.md
+CONFIG_SUMMARY.md
+PRODUCTION_READY.md
+RENDER_SETUP.md
+VERCEL_SETUP.md
 
 # ── Build outputs ─────────────────────────────────────────────────────────────
 dist/
